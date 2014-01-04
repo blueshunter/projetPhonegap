@@ -1,0 +1,148 @@
+<!--
+ To change this template, choose Tools | Templates
+ and open the template in the editor.
+ -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Paramètres</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+            
+           
+            <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+            <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+            
+            <script type="text/javascript" src="js/modele.js"></script>
+            <script src="js/moteur.js"></script>
+            
+            <link rel="stylesheet" href="css/piano.css"/>
+            <link rel="stylesheet" href="css/app.css"/>
+            
+            <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+            
+            
+                    
+       </head>
+    <body>
+  
+        
+        <div data-role="page">
+            
+            <div data-role="header">
+                <a href="index.html" onclick="save();" data-icon="back">Back</a>
+                <script>
+                    $( document ).ready(function()
+                    {
+                        //$("#slider").val("30");
+                        $("#slider2").val(window.localStorage.sound);
+                        //$("#select :radio:checked").val(window.localStorage.mode)
+                        $("#s1").val(window.localStorage.exercice);
+                        $("#s2").val(window.localStorage.grille);
+                        $("#s3").val(window.localStorage.tone);
+                        
+                        //alert(window.localStorage.mode);
+                        if(window.localStorage.mode=="asc")
+                        {$("#radio-choice-c").prop("checked",true);$("#radio-choice-d").prop("checked",false);$("#radio-choice-e").prop("checked",false);}
+                         if(window.localStorage.mode=="desc")
+                        {$("#radio-choice-c").prop("checked",false);$("#radio-choice-d").prop("checked",true);$("#radio-choice-e").prop("checked",false);}
+                         if(window.localStorage.mode=="alt")
+                        {$("#radio-choice-c").prop("checked",false);$("#radio-choice-d").prop("checked",false);$("#radio-choice-e").prop("checked",true);}
+                         
+                         
+                                        
+                    });
+                    function save()
+                    {
+                        
+                        window.localStorage.setItem("bpm",document.getElementById("slider").value);
+                        window.localStorage.setItem("sound",document.getElementById("slider2").value);
+                        window.localStorage.setItem("exercice",document.getElementById("s1").value);
+                        window.localStorage.setItem("grille",document.getElementById("s2").value);
+                        window.localStorage.setItem("tone",document.getElementById("s3").value);
+                        window.localStorage.setItem("mode",$("#select :radio:checked").val());
+                        window.localStorage.setItem("config",true);
+                        localStorage.config=true;
+                        //alert(window.localStorage.mode);
+
+                    }
+                </script>
+                <h1>Parametres</h1>
+            </div><!-- /header -->
+            
+            <div data-role="content">
+                
+                <label for="slider">Tempo</label>
+                <input type="range" name="slider" id="slider" value="90" min="10" max="240" />
+
+                <label for="slider2">Sound</label>
+                <select name="slider2" id="slider2" data-role="slider">
+                    <option value="off">Off</option>
+                    <option value="on">On</option>
+                </select>
+                
+                <fieldset id="select" name="select" data-role="controlgroup" data-type="horizontal" data-mini="true">
+                    <legend>play mode:</legend>
+                    
+                    <input type="radio" name="radio-choice-b" id="radio-choice-c" value="asc" ><label for="radio-choice-c">asc</label>
+                    <input type="radio" name="radio-choice-b" id="radio-choice-d" value="desc"><label for="radio-choice-d">desc</label>
+                    <input type="radio" name="radio-choice-b" id="radio-choice-e" value="alt" ><label for="radio-choice-e">alt</label>
+
+
+                </fieldset>
+                
+                <label for="select-choice-1" class="select">level</label>
+                        <select id="s1">
+                        <option value="0">Root - (1)</option>
+                        <option value="1">Third - (3)</option>
+                        <option value="2">Fifth - (5)</option>
+                        <option value="3">Seventh - (7)</option>
+                        <option value="4">Triads</option>
+                        <option value="5">Arpegios</option>
+                        <option value="6">Extended Arpegios</option>
+                        <option value="7">Scales</option>
+                        </select>
+                        
+                        <label for="select-choice-1" class="select">Exercise</label>
+                        <select id="s2">
+                        <option value="0">7 harmonized major scales</option>
+                        <option value="1">7 harmonized natural minor scales</option>
+                        <option value="2">7 harmonized harmonic minor scales</option>
+                        <option value="3">7 harmonized melodic minor scales</option>
+                        
+                        </select>
+                        
+                        <label for="select-choice-1" class="select">Tone</label>
+                        <select id="s3">
+                        <option value="999">Auto</option>
+                        <option value="0">C</option>
+                        <option value="1">C#</option>
+                        <option value="2">Db</option>
+                        <option value="3">D</option>
+                        <option value="4">D#</option>
+                        <option value="5">Eb</option>
+                        <option value="6">E</option>
+                        <option value="7">E#</option>
+                        <option value="8">Fb</option>
+                        <option value="9">F</option>
+                        <option value="10">F#</option>
+                        <option value="11">Gb</option>
+                        <option value="12">G</option>
+                        <option value="13">G#</option>
+                        <option value="14">Ab</option>
+                        <option value="15">A</option>
+                        <option value="16">A#</option>
+                        <option value="17">Bb</option>
+                        <option value="18">B</option>
+                        <option value="19">B#</option>
+                        <option value="20">Cb</option>
+                        </select>
+                        
+                        </div><!-- /content -->
+                    
+            </div>
+        
+                        
+        </body>
+</html>
